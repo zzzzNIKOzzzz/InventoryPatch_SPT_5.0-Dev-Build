@@ -6,27 +6,29 @@ using EFT.InventoryLogic;
 
 namespace InventoryPatch
 {
-    [BepInPlugin("com.zzznikozzz.inventorypatch", "InventoryPatch", "1.0.0")]
+    [BepInPlugin("zzzNIKOzzz.InventoryPatch", "InventoryPatch", PluginVersion)]
     public class InventoryPatchPlugin : BasePlugin
     {
-        internal static ManualLogSource Logger;
+        public const string PluginVersion = "1.0.0";
+		internal static ManualLogSource Logger;
 
         public override void Load()
         {
             Logger = Log;
 
             Logger.LogInfo("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-            Logger.LogInfo("InventoryPatch by zzzNIKOzzz is loading... ... ... ... ... ... ... ... ... ...");
-            Logger.LogInfo("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+            Logger.LogInfo("___________________InventoryPatch от zzzNIKOzzz загружается___________________");
 
-            var harmony = new Harmony("com.zzznikozzz.inventorypatch");
+
+            var harmony = new Harmony("zzznikozzz.inventorypatch");
             int patched = 0;
 
             PatchMethod(harmony, typeof(InventoryController), "IsAtReachablePlace", ref patched);
             PatchMethod(harmony, typeof(InventoryController), "IsAtBindablePlace", ref patched);
 
-            Logger.LogInfo("InventoryPatch: " + patched + " патчи УСПЕШНО применены. И это прекрасно!  Да?");
-            Logger.LogInfo("zzzNIKOzzz: Я эту медицину хоть из дикого использую! Рюкзаки, подсумки, похуй!");
+            Logger.LogInfo("InventoryPatch: " + patched + " патча УСПЕШНО применены. И это прекрасно!  Да?");
+            Logger.LogInfo("zzzNIKOzzz: Рюкзаки, подсумки, похуй! Сегодня я решаю, откуда буду лечиться!!!");
+            Logger.LogInfo("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
         }
 
         private static void PatchMethod(Harmony harmony, System.Type type, string name, ref int count)
